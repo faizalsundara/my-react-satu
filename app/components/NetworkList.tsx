@@ -4,7 +4,7 @@ import { useState } from "react";
 
 interface NetworkData {
   Network: string;
-  Prefix: string[]; // Bisa angka atau range [min, max]
+  Prefix: string[];
   Length: string[];
 }
 
@@ -46,13 +46,11 @@ const getCardNetwork = (cardNumber: string): string | null => {
     prefixInp.push(numInp1, numInp2, numInpDiscover4, numInpDiscover6)
 
     const lengInputNum = cardNumber.length.toString()
-    console.log("length---", lengInputNum)
     cardNetworks.map((netdata) => {
     const mapInput = prefixInp.map(inpNum => inpNum)
     const hasCommonValue = netdata.Prefix.some(value => mapInput.includes(value));
 
     if (netdata.Length.includes(lengInputNum) && hasCommonValue){
-        console.log("masuk sinii---", netdata.Network)
         hasil = netdata.Network
     }
   })
@@ -67,13 +65,13 @@ const NetworkList = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNumber(event.target.value);
-    setShowResult(false); // Reset hasil saat mengetik
+    setShowResult(false);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setCardType(getCardNetwork(number));
-    setShowResult(true); // Tampilkan hasil setelah tombol diklik
+    setShowResult(true);
   };
 
   return (
@@ -104,13 +102,6 @@ const NetworkList = () => {
     </div>
     <div>
             
-        {/* {showResult && cardType && (
-          <div className="m-4 p-6 bg-gray-200 dark:bg-gray-700 rounded-lg text-center">
-            <span className="text-lg font-bold text-gray-800 dark:text-white">
-              Tipe Network: {cardType}
-            </span>
-          </div>
-        )} */}
           <div className="m-4 p-6 bg-gray-200 dark:bg-gray-700 rounded-lg text-center">
             <span className="text-lg font-bold text-gray-800 dark:text-white">
               Tipe Network: {cardType}
