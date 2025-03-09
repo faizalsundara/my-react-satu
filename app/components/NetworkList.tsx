@@ -13,6 +13,10 @@ for (let i = 622126; i <= 622925; i++) {
     rangeNumDiscover.push(i.toString(), "6011", "65");
 
 }
+for (let i = 644; i <= 649; i++) {
+  rangeNumDiscover.push(i.toString());
+
+}
 
 const rangeNumMaestro: string[] = [];
 for (let i = 56; i <= 59; i++) {
@@ -40,10 +44,11 @@ const getCardNetwork = (cardNumber: string): string | null => {
     let prefixInp: string[] = []
     const numInpDiscover6 = cardNumber.slice(0, 6);
     const numInpDiscover4 = cardNumber.slice(0, 4);
+    const numInp3 = cardNumber.slice(0, 3);
     const numInp2 = cardNumber.slice(0, 2);
     const numInp1 = cardNumber.slice(0, 1);
 
-    prefixInp.push(numInp1, numInp2, numInpDiscover4, numInpDiscover6)
+    prefixInp.push(numInp1, numInp2, numInp3, numInpDiscover4, numInpDiscover6)
 
     const lengInputNum = cardNumber.length.toString()
     cardNetworks.map((netdata) => {
